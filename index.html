@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Aleatória Interativa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            padding: 20px;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 40px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 550px;
+            text-align: center;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            color: #ffffff;
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-bottom: 30px;
+        }
+
+        .content-box {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 25px;
+            border-radius: 12px;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn-fact {
+            background-color: #ffffff;
+            color: #333333;
+        }
+
+        .btn-quote {
+            background-color: #23a6d5;
+            color: #ffffff;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        footer {
+            margin-top: 30px;
+            font-size: 0.8rem;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Universo Aleatório</h1>
+        <p class="subtitle">Escolha uma pílula de conhecimento ou inspiração instantânea.</p>
+        
+        <div class="content-box" id="display-text">
+            Clique em um dos botões abaixo para gerar algo incrível!
+        </div>
+
+        <div class="btn-container">
+            <button class="btn-fact" onclick="gerarFato()">Fato Curioso</button>
+            <button class="btn-quote" onclick="gerarFrase()">Frase Motivacional</button>
+        </div>
+
+        <footer>Criado dinamicamente para espantar o tédio.</footer>
+    </div>
+
+    <script>
+        const fatos = [
+            "As bananas são radioativas porque contêm potássio, mas você precisaria comer 10 milhões delas de uma vez para morrer disso.",
+            "O mel é o único alimento que nunca estraga. Você poderia comer um mel encontrado numa tumba egípcia de 3 mil anos atrás.",
+            "Os polvos têm três corações e o sangue deles é azul.",
+            "A Islândia não tem mosquitos graças às suas condições climáticas instáveis.",
+            "O acendedor de cigarros foi inventado antes dos palitos de fósforo.",
+            "As vacas têm melhores amigas e ficam estressadas quando são separadas delas.",
+            "O som viaja cerca de quatro vezes mais rápido na água do que no ar."
+        ];
+
+        const frases = [
+            "O melhor momento para plantar uma árvore foi há 20 anos. O segundo melhor momento é agora.",
+            "Não conte os dias, faça os dias contarem.",
+            "A sua única limitação é aquela que você impõe em sua própria mente.",
+            "Pequenos riachos se tornam grandes rios quando continuam correndo.",
+            "Feito é melhor do que perfeito.",
+            "Grandes coisas nunca vêm de zonas de conforto.",
+            "Tudo o que você sempre quis está do outro lado do seu medo."
+        ];
+
+        const display = document.getElementById("display-text");
+
+        function gerarFato() {
+            const index = Math.floor(Math.random() * fatos.length);
+            display.textContent = `💡 Fato: ${fatos[index]}`;
+        }
+
+        function gerarFrase() {
+            const index = Math.floor(Math.random() * frases.length);
+            display.textContent = `✨ "${frases[index]}"`;
+        }
+    </script>
+</body>
+</html>
